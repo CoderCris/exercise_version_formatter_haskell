@@ -10,3 +10,11 @@ formatDependency (key, version)
   | otherwise           = key ++ " " ++ version   -- Default case
   where
     isPrefixOf prefix str = take (length prefix) str == prefix
+
+
+{- NeoHaskell translate
+let makeDep (h, v)
+ | v |> Text.trim |> Text.startsWith "^" = [fmt|{k} ^>={v |> Text.replace "^" ""}|]
+ | 
+ | otherwise = [fmt|{k} == {v}|]
+-}
